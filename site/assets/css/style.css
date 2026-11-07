@@ -223,7 +223,9 @@ main,
   margin-top: auto;
 }
 
-.work-action {
+.work-action,
+.button-link {
+  display: inline-block;
   padding: 8px 20px;
   border-radius: 8px;
   background: var(--color-accent);
@@ -234,7 +236,8 @@ main,
   transition: opacity 0.15s;
 }
 
-.work-action:hover {
+.work-action:hover,
+.button-link:hover {
   opacity: 0.85;
 }
 
