@@ -12,5 +12,14 @@
       "url": "https://github.com/LASC-SINCE2015/LivingManager/blob/master/docs/setup_guide.md"
     },
     "publishedAt": "2026-11-05"
+  },
+  {
+    "id": "observer",
+    "title": "Observer（仮題）",
+    "summary": "深夜のビルの中央監視室で、監視カメラの「現在の映像」と「過去の映像」を切り替えながら、事件の真相に迫るサスペンス・アドベンチャー。過去の映像には、ほんの少しだけ干渉できる――。ブラウザで遊べるゲームとして制作中です。",
+    "tags": ["ゲーム", "アドベンチャー", "HTML5"],
+    "thumbnail": "assets/images/works/observer.svg",
+    "kind": "game",
+    "status": "coming-soon"
   }
 ]

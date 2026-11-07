@@ -6,6 +6,10 @@ const ACTION_LABELS = {
   game: '遊ぶ',
 };
 
+// 制作中（status: "coming-soon"）の作品に付ける目印と、リンクの代わりに出す文言
+const COMING_SOON_BADGE = 'Coming Soon';
+const COMING_SOON_NOTE = '制作中';
+
 // 絞り込み中のタグは URL の ?tag= に入れる（そのまま共有・再読み込みできるように）
 const TAG_PARAM = 'tag';
 
@@ -30,9 +34,44 @@ function createTagButton(tag) {
   return button;
 }
 
+// 公開中の作品の「遊ぶ / 使ってみる」ボタンと、導入手順へのリンク
+function createWorkLinks(work) {
+  const action = document.createElement('a');
+  action.className = 'work-action';
+  action.href = work.url;
+  action.target = '_blank';
+  action.rel = 'noopener';
+  action.textContent = ACTION_LABELS[work.kind];
+  action.setAttribute('aria-label', `${work.title}を${ACTION_LABELS[work.kind]}（新しいタブで開く）`);
+
+  const links = [action];
+
+  // 導入手順がある作品だけ、手順へのリンクを出す
+  if (work.guide) {
+    const guide = document.createElement('a');
+    guide.className = 'work-guide';
+    guide.href = work.guide.url;
+    guide.target = '_blank';
+    guide.rel = 'noopener';
+    guide.textContent = work.guide.label;
+    guide.setAttribute('aria-label', `${work.title}: ${work.guide.label}（新しいタブで開く）`);
+    links.push(guide);
+  }
+  return links;
+}
+
+// 制作中の作品は、リンクを出さず「制作中」であることと公開時期の目安を出す
+function createComingSoonNote(work) {
+  const note = document.createElement('p');
+  note.className = 'work-coming-soon';
+  note.textContent = work.releaseNote ? `${COMING_SOON_NOTE}・${work.releaseNote}` : COMING_SOON_NOTE;
+  return note;
+}
+
 function createWorkCard(work, index) {
+  const comingSoon = work.status === 'coming-soon';
   const card = document.createElement('li');
-  card.className = 'work-card';
+  card.className = comingSoon ? 'work-card is-coming-soon' : 'work-card';
   // 並び替えのアニメーションで、カードごとに動きを追うための名前
   card.style.viewTransitionName = `work-card-${index}`;
 
@@ -43,6 +82,12 @@ function createWorkCard(work, index) {
   thumbnail.alt = '';
   thumbnail.loading = 'lazy';
   thumbnailFrame.append(thumbnail);
+  if (comingSoon) {
+    const badge = document.createElement('span');
+    badge.className = 'work-badge';
+    badge.textContent = COMING_SOON_BADGE;
+    thumbnailFrame.append(badge);
+  }
 
   const body = document.createElement('div');
   body.className = 'work-body';
@@ -64,28 +109,12 @@ function createWorkCard(work, index) {
     tagList.append(tagItem);
   }
 
-  const action = document.createElement('a');
-  action.className = 'work-action';
-  action.href = work.url;
-  action.target = '_blank';
-  action.rel = 'noopener';
-  action.textContent = ACTION_LABELS[work.kind];
-  action.setAttribute('aria-label', `${work.title}を${ACTION_LABELS[work.kind]}（新しいタブで開く）`);
-
   const actions = document.createElement('div');
   actions.className = 'work-actions';
-  actions.append(action);
-
-  // 導入手順がある作品だけ、手順へのリンクを出す
-  if (work.guide) {
-    const guide = document.createElement('a');
-    guide.className = 'work-guide';
-    guide.href = work.guide.url;
-    guide.target = '_blank';
-    guide.rel = 'noopener';
-    guide.textContent = work.guide.label;
-    guide.setAttribute('aria-label', `${work.title}: ${work.guide.label}（新しいタブで開く）`);
-    actions.append(guide);
+  if (comingSoon) {
+    actions.append(createComingSoonNote(work));
+  } else {
+    actions.append(...createWorkLinks(work));
   }
 
   body.append(title, summary, tagList, actions);
@@ -179,8 +208,12 @@ async function showWorks() {
       return;
     }
 
-    // 公開日が新しい順に並べる
-    works.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+    // 公開中の作品を公開日が新しい順に並べ、制作中の作品はその後ろに置く
+    const isComingSoon = (work) => work.status === 'coming-soon';
+    works.sort((a, b) => {
+      if (isComingSoon(a) !== isComingSoon(b)) return isComingSoon(a) ? 1 : -1;
+      return (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '');
+    });
     works.forEach((work, index) => {
       const element = createWorkCard(work, index);
       cards.push({ element, tags: work.tags });
