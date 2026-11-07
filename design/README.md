@@ -18,7 +18,7 @@ adsite の設計書（どう作るか）を置くフォルダです。仕様（�
 
 次のものを追加・変更したときは、`site/about.html` と `site/privacy.html` の記載も合わせて直し、制定日の下に改定日を書く。
 
-- アクセス解析ツール（今は「使用していない」と書いている）
+- アクセス解析ツール（今は Cloudflare Web Analytics を使っていると書いている。[ADR 0003](decisions/0003_cloudflare_web_analytics.md)）
 - 広告・アフィリエイトのサービス
 - お問い合わせの方法
 - 閲覧者の情報を受け取る機能（Phase 2 の感想コメントなど）
