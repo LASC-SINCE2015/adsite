@@ -16,17 +16,24 @@ adsite/
    ├─ index.html        … トップページ（プロフィール・作品カード一覧）
    ├─ about.html        … サイトについて（運営者・広告掲載の表記・免責事項・お問い合わせ）
    ├─ privacy.html      … プライバシーポリシー（取得する情報・Cookie・広告配信）
+   ├─ 404.html          … ページが見つからないときのページ（ミニゲーム付き）
    ├─ data/
    │  └─ works.json     … 作品の一覧（カードの元データ）
    └─ assets/
       ├─ css/
       ├─ js/
+      │  ├─ main.js            … 作品カードの一覧・タグの絞り込み
+      │  ├─ card-tilt.js       … 作品カードの 3D チルト
+      │  ├─ hero-particles.js  … 見出しの粒子演出
+      │  └─ game-404.js        … 404 ページのミニゲーム
       └─ images/
          └─ works/      … 作品のサムネイル画像（<作品の id>.png など）
 ```
 
 - `site/` の外のファイル（md など）は公開されない。公開したくないものは `site/` に置かない。
 - ビルドは行わない（[ADR 0002](../decisions/0002_static_html_no_build.md)）。
+- `404.html` は Cloudflare Pages が、存在しない URL へのアクセスに対してステータス 404 で返す。どの階層の URL でも表示されるため、中で読み込むファイルや他ページへのリンクは `/assets/...` のようにサイトの最上位からのパスで書く。
+- 動きのある仕掛けの設計は [interactions.md](interactions.md) を参照。
 
 ## 作品データ（site/data/works.json）
 
