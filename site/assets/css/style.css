@@ -223,7 +223,9 @@ main,
   margin-top: auto;
 }
 
-.work-action {
+.work-action,
+.button-link {
+  display: inline-block;
   padding: 8px 20px;
   border-radius: 8px;
   background: var(--color-accent);
@@ -234,7 +236,8 @@ main,
   transition: opacity 0.15s;
 }
 
-.work-action:hover {
+.work-action:hover,
+.button-link:hover {
   opacity: 0.85;
 }
 
@@ -260,7 +263,87 @@ main,
 }
 
 .site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
   padding-block: 28px;
   border-top: 1px solid var(--color-line);
   color: var(--color-muted);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.875rem;
+}
+
+.footer-nav a {
+  text-decoration: none;
+}
+
+.footer-nav a:hover,
+.footer-nav a[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+/* サイトについて・プライバシーポリシーなどの文章のページ */
+.page {
+  max-width: 44em;
+  padding-block: clamp(40px, 8vw, 80px);
+}
+
+.page h1 {
+  margin-bottom: 24px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.page section {
+  margin-top: 40px;
+}
+
+.page h2 {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-line);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.page p + p {
+  margin-top: 12px;
+}
+
+.page section ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 1.5em;
+  list-style: disc;
+}
+
+.info-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 24px;
+  margin: 0;
+}
+
+.info-list dt {
+  color: var(--color-muted);
+}
+
+.info-list dd {
+  margin: 0;
+}
+
+.page-updated {
+  margin-top: 48px;
+  color: var(--color-muted);
+  font-size: 0.875rem;
 }
