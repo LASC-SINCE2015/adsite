@@ -171,6 +171,7 @@ main,
 }
 
 .work-thumbnail {
+  position: relative;
   aspect-ratio: 16 / 9;
   background: var(--color-thumbnail);
 }
@@ -244,6 +245,30 @@ main,
 .work-guide {
   color: var(--color-accent);
   font-size: 0.875rem;
+}
+
+/* 制作中の作品（status: "coming-soon"） */
+.work-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-surface);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.work-coming-soon {
+  padding: 8px 20px;
+  border: 1px dashed var(--color-line);
+  border-radius: 8px;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
 }
 
 .profile > div {
