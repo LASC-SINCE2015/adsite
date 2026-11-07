@@ -14,3 +14,4 @@
 |---|---|---|
 | [0001](0001_cloudflare_pages_free.md) | Cloudflare Pages の無料プランで公開し、GitHub 連携で自動公開する | 採用 |
 | [0002](0002_static_html_no_build.md) | 初期はビルドなしの静的 HTML / CSS / JS で作る | 採用 |
+| [0003](0003_cloudflare_web_analytics.md) | アクセス解析は Cloudflare Web Analytics を使い、Pages のダッシュボードで有効にする | 採用 |
