@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "ouchi-stock",
+    "title": "おうちストック",
+    "summary": "日用品の在庫状況を家族でリアルタイムに共有し、買い忘れや重複買いを防ぐ Web アプリです。デモはログインなしで試せます。気に入ったら、自分の家族用に導入して無料で使えます。",
+    "tags": ["暮らし", "Flutter", "Firebase"],
+    "thumbnail": "assets/images/works/ouchi-stock.png",
+    "url": "https://lasc-since2015.github.io/LivingManager/",
+    "kind": "app",
+    "guide": {
+      "label": "自分の家族用に導入する",
+      "url": "https://github.com/LASC-SINCE2015/LivingManager/blob/master/docs/setup_guide.md"
+    },
+    "publishedAt": "2026-11-05"
+  }
+]
