@@ -44,7 +44,23 @@ function createWorkCard(work) {
   action.textContent = ACTION_LABELS[work.kind];
   action.setAttribute('aria-label', `${work.title}を${ACTION_LABELS[work.kind]}（新しいタブで開く）`);
 
-  body.append(title, summary, tagList, action);
+  const actions = document.createElement('div');
+  actions.className = 'work-actions';
+  actions.append(action);
+
+  // 導入手順がある作品だけ、手順へのリンクを出す
+  if (work.guide) {
+    const guide = document.createElement('a');
+    guide.className = 'work-guide';
+    guide.href = work.guide.url;
+    guide.target = '_blank';
+    guide.rel = 'noopener';
+    guide.textContent = work.guide.label;
+    guide.setAttribute('aria-label', `${work.title}: ${work.guide.label}（新しいタブで開く）`);
+    actions.append(guide);
+  }
+
+  body.append(title, summary, tagList, actions);
   card.append(thumbnailFrame, body);
   return card;
 }
