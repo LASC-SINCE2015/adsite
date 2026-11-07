@@ -347,3 +347,248 @@ main,
   color: var(--color-muted);
   font-size: 0.875rem;
 }
+
+/* ---------- 見出しの粒子演出（assets/js/hero-particles.js） ---------- */
+.hero {
+  position: relative;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* 本物の文字は残したまま透明にし、canvas の粒子だけを見せる */
+.hero h1.is-particle {
+  color: transparent;
+}
+
+@media print {
+  .hero-particles {
+    display: none;
+  }
+
+  .hero h1.is-particle {
+    color: inherit;
+  }
+}
+
+/* ---------- 作品の絞り込み（assets/js/main.js） ---------- */
+.works-toolbar {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.works-toolbar[hidden] {
+  display: none;
+}
+
+.works-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-button,
+.tag-button {
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.filter-button {
+  padding: 4px 14px;
+  font-size: 0.875rem;
+}
+
+.tag-button {
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  line-height: inherit;
+}
+
+.filter-button:hover,
+.tag-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.filter-button[aria-pressed="true"],
+.tag-button[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.filter-button:focus-visible,
+.tag-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ボタンを入れるタグは、枠をボタンの側に持たせる */
+.tag-list li.has-button {
+  padding: 0;
+  border: 0;
+}
+
+.works-count {
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+}
+
+.work-card[hidden] {
+  display: none;
+}
+
+/* 絞り込みで並びが変わるときのアニメーション（View Transitions API） */
+.work-card {
+  view-transition-class: work-card;
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+::view-transition-new(.work-card):only-child {
+  animation: work-card-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+::view-transition-old(.work-card):only-child {
+  animation: work-card-out 0.25s ease-in both;
+}
+
+@keyframes work-card-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes work-card-out {
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+/* ---------- 作品カードの 3D チルト（assets/js/card-tilt.js） ---------- */
+.work-card {
+  position: relative;
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+}
+
+.work-card.is-tilting {
+  box-shadow: 0 20px 40px -24px rgb(0 0 0 / 0.45);
+  transition: transform 0.1s linear, box-shadow 0.2s;
+}
+
+/* カーソルの位置に光が当たっているように見せる */
+.work-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--shine-x, 50%) var(--shine-y, 50%),
+    rgb(255 255 255 / 0.55),
+    rgb(255 255 255 / 0) 60%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.work-card.is-tilting::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card {
+    transform: none;
+    transition: none;
+  }
+
+  .work-card::after {
+    display: none;
+  }
+}
+
+/* ---------- 404 ページのミニゲーム（assets/js/game-404.js） ---------- */
+.not-found-lead {
+  margin-bottom: 24px;
+}
+
+.game {
+  margin-top: 56px;
+}
+
+.game-help {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+}
+
+.game-canvas {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin-top: 20px;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-surface);
+  /* 指でバーを動かすとき、画面がスクロールしないようにする */
+  touch-action: none;
+  cursor: pointer;
+}
+
+.game-canvas:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.game-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 16px;
+}
+
+.game-button {
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-accent);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 7px 18px;
+  cursor: pointer;
+}
+
+.game-button:hover {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.game-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.game-status {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}

@@ -6,7 +6,7 @@ adsite の設計書（どう作るか）を置くフォルダです。仕様（�
 
 | フォルダ | 内容 |
 |---|---|
-| [architecture/](architecture/README.md) | フォルダ構成・作品データの持ち方 |
+| [architecture/](architecture/README.md) | フォルダ構成・作品データの持ち方・動きのある仕掛け |
 | [decisions/](decisions/README.md) | 設計判断の記録（ADR） |
 
 ## 実装状況の書き方
