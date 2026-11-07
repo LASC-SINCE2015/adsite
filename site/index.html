@@ -13,6 +13,8 @@
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/card-tilt.js" defer></script>
+  <script src="assets/js/hero-particles.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -26,7 +28,7 @@
   <main>
     <section class="hero">
       <p class="hero-label">Web Apps &amp; Games</p>
-      <h1>つくったものを、<br>並べる場所。</h1>
+      <h1 data-particle-title>つくったものを、<br>並べる場所。</h1>
       <p class="hero-lead">LASC が作った Web アプリやゲームの作品集です。気になる作品は、ここからすぐに試せます。</p>
     </section>
 
@@ -34,6 +36,10 @@
       <h2 id="works-heading">作品</h2>
       <p class="works-status" id="works-status" role="status">読み込んでいます…</p>
       <noscript><p class="works-status">作品の一覧を表示するには JavaScript を有効にしてください。</p></noscript>
+      <div class="works-toolbar" id="works-toolbar" hidden>
+        <div class="works-filter" id="works-filter" role="group" aria-label="タグで絞り込む"></div>
+        <p class="works-count" id="works-count" aria-live="polite"></p>
+      </div>
       <ul class="works-grid" id="works-grid"></ul>
     </section>
 
