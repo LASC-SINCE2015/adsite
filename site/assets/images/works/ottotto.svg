@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <!-- 積み上がった四角い生き物と、落ちていく 1 匹（作品「おっとっとタワー」のサムネイル） -->
+  <defs>
+    <!-- 生き物の体。塗りの色は use 側の fill で決める。座標はゲーム本体の線画と同じ -->
+    <g id="chara" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M262 392 C300 320 330 265 360 272 C395 280 405 320 405 382 L500 384 C530 320 555 280 578 280 C610 285 622 340 625 392 C675 450 670 525 622 560 L604 845 L205 842 L218 560 C205 520 210 460 262 392 Z"/>
+      <g fill="none" stroke="#2b2b2b" stroke-width="12">
+        <!-- 耳と頭 -->
+        <path d="M268 388 C300 320 330 265 360 272 C395 280 405 320 405 382 L497 385"/>
+        <path d="M505 385 C530 320 555 280 578 280 C610 285 622 340 625 390"/>
+        <!-- ほっぺ -->
+        <path d="M250 440 C212 468 215 528 290 538"/>
+        <path d="M632 430 C672 462 668 522 585 546"/>
+        <!-- 体・しっぽ -->
+        <path d="M218 588 L185 805"/>
+        <path d="M248 832 L515 842"/>
+        <path d="M622 645 C615 720 600 800 575 880"/>
+        <path d="M515 848 C512 885 535 892 575 880"/>
+        <path d="M612 762 C652 752 684 792 612 806"/>
+        <!-- まゆ・口 -->
+        <path d="M318 455 C330 420 380 410 412 423"/>
+        <path d="M495 423 C530 410 575 415 582 432"/>
+        <path d="M430 438 Q438 454 452 444 Q465 438 478 446"/>
+        <path d="M448 452 L458 522"/>
+        <path d="M472 450 L476 512"/>
+        <!-- 腕・左足 -->
+        <g stroke-width="15">
+          <path d="M195 505 C140 500 128 560 195 568"/>
+          <path d="M650 518 C700 510 715 540 640 605"/>
+          <path d="M185 805 C150 815 158 862 215 846"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- 目: ふつう -->
+    <g id="eyes-normal" fill="none" stroke="#2b2b2b" stroke-width="12">
+      <ellipse cx="385" cy="465" rx="30" ry="22"/>
+      <ellipse cx="538" cy="462" rx="25" ry="24"/>
+    </g>
+
+    <!-- 目: にっこり（ほっぺの赤み付き） -->
+    <g id="eyes-nikkori">
+      <g fill="none" stroke="#2b2b2b" stroke-width="12" stroke-linecap="round">
+        <path d="M357 478 Q385 438 413 478"/>
+        <path d="M512 476 Q538 438 564 476"/>
+      </g>
+      <g fill="#ff788c" opacity="0.45">
+        <ellipse cx="300" cy="520" rx="32" ry="18"/>
+        <ellipse cx="590" cy="515" rx="32" ry="18"/>
+      </g>
+    </g>
+
+    <!-- 目: 焦り（見開いた目と汗） -->
+    <g id="eyes-scared">
+      <g fill="#ffffff" stroke="#2b2b2b" stroke-width="12">
+        <ellipse cx="385" cy="461" rx="38" ry="34"/>
+        <ellipse cx="538" cy="458" rx="38" ry="34"/>
+      </g>
+      <g fill="#2b2b2b">
+        <circle cx="388" cy="462" r="8"/>
+        <circle cx="535" cy="460" r="8"/>
+      </g>
+      <g fill="#7cc4ff" stroke="#2b2b2b" stroke-width="7" stroke-linejoin="round">
+        <path d="M690 386 Q712 420 690 432 Q668 420 690 386 Z"/>
+        <path d="M180 406 Q202 440 180 452 Q158 440 180 406 Z"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="320" height="180" rx="12" fill="#fbfaf4"/>
+
+  <!-- 土台 -->
+  <rect x="72" y="160" width="100" height="12" rx="3" fill="#ffffff" stroke="#2b2b2b" stroke-width="1.5"/>
+
+  <!-- タワー（下から 3 匹） -->
+  <g transform="translate(122 137) scale(0.1) translate(-410 -613)">
+    <use href="#chara" fill="#ffeef2"/>
+    <use href="#eyes-nikkori"/>
+  </g>
+  <g transform="translate(131 91) rotate(-4) scale(0.1) translate(-410 -613)">
+    <use href="#chara" fill="#ffffff"/>
+    <use href="#eyes-normal"/>
+  </g>
+  <g transform="translate(116 46) rotate(7) scale(0.1) translate(-410 -613)">
+    <use href="#chara" fill="#fff1b8"/>
+    <use href="#eyes-normal"/>
+  </g>
+
+  <!-- 落ちていく 1 匹 -->
+  <g transform="translate(236 118) rotate(32) scale(0.1) translate(-410 -613)">
+    <use href="#chara" fill="#e9f3ff"/>
+    <use href="#eyes-scared"/>
+  </g>
+  <g fill="none" stroke="#2b2b2b" stroke-width="1.5" stroke-linecap="round" opacity="0.35">
+    <path d="M214 62 L207 78"/>
+    <path d="M228 56 L223 70"/>
+    <path d="M242 60 L239 72"/>
+  </g>
+
+  <!-- ゲーム中の吹き出しと同じ文言 -->
+  <text x="238" y="40" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="bold" fill="#e5484d">おっとっと！</text>
+</svg>
