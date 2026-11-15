@@ -247,6 +247,68 @@ main,
   font-size: 0.875rem;
 }
 
+/* いいねボタン（assets/js/likes.js） */
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 4px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.like-button[hidden] {
+  display: none;
+}
+
+.like-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.like-button[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  color: var(--color-accent);
+}
+
+.like-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.like-button:disabled {
+  cursor: progress;
+}
+
+.like-icon {
+  display: inline-block;
+  line-height: 1;
+}
+
+.like-button.is-popping .like-icon {
+  animation: like-pop 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.4);
+}
+
+@keyframes like-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .like-button.is-popping .like-icon {
+    animation: none;
+  }
+}
+
 /* 制作中の作品（status: "coming-soon"） */
 .work-badge {
   position: absolute;

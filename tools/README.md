@@ -35,6 +35,16 @@ node tools/fetch_analytics.mjs --out <保存先フォルダ> --from 2026-11-01 -
 
 保存される内容: 合計（ページビュー・訪問数）と、ページ・参照元・国・端末・ブラウザ・OS ごとの内訳（各上位 100 件）。ボットは除く。
 
+## SNS 共有用の画像（OGP 画像）を作る
+
+[make_ogp_image.ps1](make_ogp_image.ps1) が `site/assets/images/ogp.png`（1200×630）を作る。Windows の標準機能（System.Drawing）と游明朝・游ゴシックで描くので、追加のインストールは不要。文言や配色を変えたら作り直す。
+
+```bash
+powershell -NoProfile -File tools/make_ogp_image.ps1
+```
+
+X などは画像をしばらく覚えているので、作り直しても反映に時間がかかることがある。
+
 ## 公開
 
 Cloudflare Pages が GitHub と連携して自動で公開する。手作業のデプロイは不要（[ADR 0001](../design/decisions/0001_cloudflare_pages_free.md)）。
