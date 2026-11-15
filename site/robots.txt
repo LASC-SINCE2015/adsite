@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lasc-atelier.pages.dev/sitemap.xml
