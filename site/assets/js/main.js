@@ -68,6 +68,25 @@ function createComingSoonNote(work) {
   return note;
 }
 
+// いいねボタン。数を読み込めたときだけ likes.js が表示する
+function createLikeButton(work) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'like-button';
+  button.dataset.workId = work.id;
+  button.dataset.workTitle = work.title;
+  button.hidden = true;
+  const icon = document.createElement('span');
+  icon.className = 'like-icon';
+  icon.setAttribute('aria-hidden', 'true');
+  icon.textContent = '♥';
+  const count = document.createElement('span');
+  count.className = 'like-count';
+  count.textContent = '0';
+  button.append(icon, count);
+  return button;
+}
+
 function createWorkCard(work, index) {
   const comingSoon = work.status === 'coming-soon';
   const card = document.createElement('li');
@@ -116,6 +135,7 @@ function createWorkCard(work, index) {
   } else {
     actions.append(...createWorkLinks(work));
   }
+  actions.append(createLikeButton(work));
 
   body.append(title, summary, tagList, actions);
   card.append(thumbnailFrame, body);
@@ -227,6 +247,8 @@ async function showWorks() {
     document.getElementById('works-toolbar').hidden = false;
 
     status.remove();
+    // カードを並べ終えたことを、いいねボタン（likes.js）などに知らせる
+    document.dispatchEvent(new CustomEvent('works:rendered'));
   } catch (error) {
     console.error(error);
     status.textContent = '作品の一覧を読み込めませんでした。時間をおいてもう一度お試しください。';
