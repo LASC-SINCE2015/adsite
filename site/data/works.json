@@ -26,10 +26,13 @@
   {
     "id": "observer",
     "title": "Observer（仮題）",
-    "summary": "深夜のビルの中央監視室で、監視カメラの「現在の映像」と「過去の映像」を切り替えながら、事件の真相に迫るサスペンス・アドベンチャー。過去の映像には、ほんの少しだけ干渉できる――。ブラウザで遊べるゲームとして制作中です。",
+    "summary": "深夜のビルの中央監視室で、監視カメラの「現在の映像」と「過去の映像」を切り替えながら、事件の真相に迫るサスペンス・アドベンチャー。過去の映像には、ほんの少しだけ干渉できる――。スマホでも PC でも、ブラウザですぐ遊べます。",
     "tags": ["ゲーム", "アドベンチャー", "HTML5"],
     "thumbnail": "assets/images/works/observer.svg",
+    "url": "https://lasc-since2015.github.io/Observer/",
     "kind": "game",
-    "status": "coming-soon"
+    "status": "in-development",
+    "notice": "制作中の作品です。いまは 1〜2 章を遊べます。今後、内容や仕様が大きく変わることがあります。",
+    "publishedAt": "2026-11-15"
   }
 ]

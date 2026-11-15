@@ -10,6 +10,9 @@ const ACTION_LABELS = {
 const COMING_SOON_BADGE = 'Coming Soon';
 const COMING_SOON_NOTE = '制作中';
 
+// 制作途中だが遊べる状態で公開している作品（status: "in-development"）に付ける目印
+const IN_DEVELOPMENT_BADGE = '制作中';
+
 // 絞り込み中のタグは URL の ?tag= に入れる（そのまま共有・再読み込みできるように）
 const TAG_PARAM = 'tag';
 
@@ -101,10 +104,11 @@ function createWorkCard(work, index) {
   thumbnail.alt = '';
   thumbnail.loading = 'lazy';
   thumbnailFrame.append(thumbnail);
-  if (comingSoon) {
+  const inDevelopment = work.status === 'in-development';
+  if (comingSoon || inDevelopment) {
     const badge = document.createElement('span');
-    badge.className = 'work-badge';
-    badge.textContent = COMING_SOON_BADGE;
+    badge.className = inDevelopment ? 'work-badge is-in-development' : 'work-badge';
+    badge.textContent = inDevelopment ? IN_DEVELOPMENT_BADGE : COMING_SOON_BADGE;
     thumbnailFrame.append(badge);
   }
 
@@ -137,7 +141,15 @@ function createWorkCard(work, index) {
   }
   actions.append(createLikeButton(work));
 
-  body.append(title, summary, tagList, actions);
+  body.append(title, summary);
+  // 制作中であることなど、遊ぶ前に知っておいてほしい注意書き
+  if (work.notice) {
+    const notice = document.createElement('p');
+    notice.className = 'work-notice';
+    notice.textContent = work.notice;
+    body.append(notice);
+  }
+  body.append(tagList, actions);
   card.append(thumbnailFrame, body);
   return card;
 }
