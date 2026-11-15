@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <!-- キラキラジュースと妖精のイメージ（作品「モグモグ！キラキラ・ファクトリー」のサムネイル） -->
+  <rect width="320" height="180" fill="#fff3f8"/>
+  <circle cx="60" cy="40" r="26" fill="#ffe0ee"/>
+  <circle cx="270" cy="140" r="34" fill="#e3f6ea"/>
+  <!-- ジュースのびん -->
+  <rect x="136" y="46" width="48" height="16" rx="4" fill="#8fdcae"/>
+  <path d="M142 62h36v14c18 8 26 22 26 42 0 24-16 38-44 38s-44-14-44-38c0-20 8-34 26-42z" fill="#ff9fc6"/>
+  <ellipse cx="144" cy="112" rx="12" ry="20" fill="#ffc4dc"/>
+  <!-- キラキラ -->
+  <g fill="#fff" stroke="#ff9fc6" stroke-width="2" stroke-linejoin="round">
+    <path d="M232 52l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+    <path d="M92 96l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+    <path d="M250 112l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+  </g>
+  <!-- 妖精（まるい体と羽） -->
+  <ellipse cx="86" cy="148" rx="14" ry="9" fill="#fff" stroke="#8fdcae" stroke-width="2" transform="rotate(-25 86 148)"/>
+  <circle cx="100" cy="150" r="12" fill="#ffd9a8"/>
+  <circle cx="96" cy="148" r="1.8" fill="#2b2b2b"/><circle cx="104" cy="148" r="1.8" fill="#2b2b2b"/>
+  <path d="M97 154q3 3 6 0" fill="none" stroke="#2b2b2b" stroke-width="1.6" stroke-linecap="round"/>
+</svg>
