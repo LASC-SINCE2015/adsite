@@ -34,5 +34,15 @@
     "status": "in-development",
     "notice": "制作中の作品です。いまは 1〜2 章を遊べます。今後、内容や仕様が大きく変わることがあります。",
     "publishedAt": "2026-11-15"
+  },
+  {
+    "id": "mogmog-kirakira-factory",
+    "title": "モグモグ！キラキラ・ファクトリー",
+    "summary": "ようせいさんをおうえんして、キラキラジュースをつくる、ほのぼの工場ゲーム。スマホでも PC でも、ブラウザですぐ遊べます。",
+    "tags": ["ゲーム", "工場", "HTML5"],
+    "thumbnail": "assets/images/works/mogmog-kirakira-factory.svg",
+    "url": "https://lasc-since2015.github.io/MogMogKiraKiraFactory/",
+    "kind": "game",
+    "publishedAt": "2026-11-15"
   }
 ]
