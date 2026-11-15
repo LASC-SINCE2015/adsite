@@ -324,6 +324,21 @@ main,
   text-transform: uppercase;
 }
 
+/* 制作途中で公開している作品（status: "in-development"）の目印は、文字を大文字にしない */
+.work-badge.is-in-development {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+/* 作品の注意書き（notice） */
+.work-notice {
+  padding: 8px 12px;
+  border: 1px dashed var(--color-line);
+  border-radius: 8px;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
 .work-coming-soon {
   padding: 8px 20px;
   border: 1px dashed var(--color-line);
